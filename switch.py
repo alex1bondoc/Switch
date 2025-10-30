@@ -29,9 +29,8 @@ def create_vlan_tag(vlan_id):
     # vlan_id & 0x0FFF ensures that only the last 12 bits are used
     return struct.pack('!H', 0x8200) + struct.pack('!H', vlan_id & 0x0FFF)
 
-def send_bdpu_every_sec():
+def function_on_different_thread():
     while True:
-        # TODO Send BDPU every second if necessary
         time.sleep(1)
 
 def main():
@@ -45,8 +44,9 @@ def main():
     print("# Starting switch with id {}".format(switch_id), flush=True)
     print("[INFO] Switch MAC", ':'.join(f'{b:02x}' for b in get_switch_mac()))
 
-    # Create and start a new thread that deals with sending BDPU
-    t = threading.Thread(target=send_bdpu_every_sec)
+
+    # Example of running a function on a separate thread.
+    t = threading.Thread(target=function_on_different_thread)
     t.start()
 
     # Printing interface names
