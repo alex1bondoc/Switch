@@ -1,4 +1,4 @@
-FROM jokeswar/base-ctl
+FROM vladb12/pc-1
 
 RUN echo "Hello from Docker"
 
@@ -18,3 +18,5 @@ RUN DEBIAN_FRONTEND=nonintearctive pip3 install pathlib
 RUN DEBIAN_FRONTEND=nonintearctive pip3 install git+https://github.com/mininet/mininet.git
 RUN DEBIAN_FRONTEND=nonintearctive apt install -qy tshark
 RUN DEBIAN_FRONTEND=nonintearctive apt install -qy tcpdump
+
+COPY ./checker ${CHECKER_DATA_DIRECTORY}
